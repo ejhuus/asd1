@@ -73,7 +73,17 @@ class RegBinTree:
     def find_centroid(self) -> RegBinNode|Leaf|None:
         # TODO: uzupełnij tę metodę (możesz deklarować dodatkowe metody tutaj, w PosBinNode lub globalnie).
         # Możesz założyć, że pola 'size' w wierzchołkach zawierają prawidłowe wartości.
-        return None
+        if self.root is None:
+            return None
+        max_size = int(self.root.size / 2)
+        def find_node(node: RegBinNode|Leaf) -> RegBinNode|Leaf:
+            if type(node) is RegBinNode:
+                if type(node.left) is not None and node.left.size > max_size:
+                    return find_node(node.left)
+                if type(node.right) is not None and node.right.size > max_size:
+                    return find_node(node.right)
+            return node
+        return find_node(self.root)
 
     def __str__(self):
         return '(Empty tree)' if self.root is None else str(self.root)
