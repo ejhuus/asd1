@@ -44,7 +44,7 @@ class RegBinNode:
     def __str__(self):
         return f'{self.value} (size: {self.size})\n{indent(str(self.left))}\n{indent(str(self.right))}'
 
-    #Rekurencyjnie działająca funkcja działająca na węźle. Przekazujemy wynik obecnego size węzła do góry.
+    #Rekurencyjna funkcja działająca na węźle. Przekazujemy wynik obecnego size węzła do góry.
     def calc_node(self):
         result = 1
         if self.left:
