@@ -19,7 +19,7 @@ class Leaf:
     def __str__(self):
         return f'{self.value} (size: {self.size})\n'
 
-    #Funkcja ustawiająca prawidłowy size dla liścia
+    #Jeżeli nasza funkcja rekurencyjna napotka liścia to ustawia jego rozmiar na jeden i zwraca go.
     def calc_node(self):
         self.size = 1
         return self.size
@@ -44,7 +44,7 @@ class RegBinNode:
     def __str__(self):
         return f'{self.value} (size: {self.size})\n{indent(str(self.left))}\n{indent(str(self.right))}'
 
-    #Rekurencyjnie działająca funkcja działająca na węźle.
+    #Rekurencyjnie działająca funkcja działająca na węźle. Przekazujemy wynik obecnego size węzła do góry.
     def calc_node(self):
         result = 1
         if self.left:
@@ -63,12 +63,11 @@ class RegBinTree:
         self.root = node
     
     def calculate_sizes(self):
-        # TODO: uzupełnij tę metodę (możesz deklarować dodatkowe metody tutaj, w PosBinNode lub globalnie).
+       #Jeżeli korzeń nie istnieje zwróć None.
         if self.root is None:
             return None
-        #Zacznij rekurencje od korzenia.
+        #Zacznij rekurencje od korzenia metodą z węzła.
         self.root.calc_node()
-        pass
 
     # Funkcja znajdująca centroid w drzewie.
     def find_centroid(self) -> RegBinNode|Leaf|None:
